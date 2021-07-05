@@ -148,7 +148,7 @@ async def scheduled(wait_for):
 			response = request.execute()
 			#print(response['items'][0]['contentDetails']['relatedPlaylists']['uploads'])
 			counter = db.get_video_count(ids[id][0])
-			if counter < int(response['items'][0]['statistics']['videoCount']):
+			if counter < int(response['items'][0]['statistics']['videoCount']) + 1:
 				request = youtube.playlistItems().list(
 					part = 'contentDetails, snippet',
 					playlistId = response['items'][0]['contentDetails']['relatedPlaylists']['uploads'],
